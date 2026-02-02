@@ -1,9 +1,12 @@
 import { Redis } from "@upstash/redis";
+import dotenv from 'dotenv';
+dotenv.config();// Load environment variables from .env file
+
 
 
 const redis = new Redis({
-  url: 'https://great-bat-38659.upstash.io',
-  token: 'AZcDAAIncDFiNjIyNzc3OTM2ODA0Yjg5YTQ3MTIyNGE0MjFlYzdhMHAxMzg2NTk',
+  url: process.env.UPSTASH_REDIS_REST_URL,
+  token: process.env.UPSTASH_REDIS_REST_TOKEN,
 })
 
 export default redis;
