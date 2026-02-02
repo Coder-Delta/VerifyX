@@ -1,7 +1,13 @@
 import express from 'express'
 import redis from './redisServer.js'
+import dotenv from 'dotenv';
+dotenv.config();// Load environment variables from .env file
+import { testMail } from './Controllers/user.controller.js';
+
 
 const app = express()
+app.use(express.json())
+
 const port = process.env.PORT || 3000
 
 app.get('/', async (_, res) => {
@@ -10,6 +16,8 @@ app.get('/', async (_, res) => {
   res.send(data)
 })// redis.set is used to set a key 'test' with value 'OK' that expires in 30 seconds. 
 // redis.get retrieves the value of 'test'.
+
+app.post('/send-mail', testMail)
 
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`)
