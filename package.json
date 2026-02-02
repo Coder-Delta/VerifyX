@@ -1,0 +1,27 @@
+{
+  "name": "verifyx",
+  "version": "1.0.0",
+  "description": "It is a simple email and phone number verification system using Upstash Redis as a database to store verification codes.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon src/index.js",
+    "start": "node src/index.js"
+  },
+  "keywords": [
+    "song",
+    "music",
+    "mountain"
+  ],
+  "author": "Coder-Delta",
+  "license": "ISC",
+  "packageManager": "pnpm@10.28.2",
+  "dependencies": {
+    "@upstash/redis": "^1.36.1",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.11"
+  }
+}
