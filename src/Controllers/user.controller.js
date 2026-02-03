@@ -6,8 +6,8 @@ export const testMail = async (req, res) => {
   await transporter.sendMail({
     from: `"VerifyX" <${process.env.SMTP_USER}>`,
     to: email,
-    subject: 'SMTP Test',
-    text: 'If you got this, Gmail SMTP is working fine!',
+    subject: 'OTP Verification Mail',
+    text: "Don't share this OTP with anyone and don't reply to this mail... This is system generated mail.",
   })
 
   res.json({ success: true, message: 'Email sent' })
