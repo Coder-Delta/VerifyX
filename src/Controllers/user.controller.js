@@ -2,6 +2,7 @@ import transporter from "../services/mail.service.js";
 import { generateOTP } from "../utils/otpGenerator.js";
 import redis from "../redisServer.js";
 
+// Send OTP Mail
 const testMail = async (req, res) => {
   try {
     const { email } = req.body;
@@ -49,6 +50,7 @@ const testMail = async (req, res) => {
   }
 };
 
+// Verify OTP
 const verifyOtp = async (req, res) => {
   try {
     const { email, otp } = req.body;
