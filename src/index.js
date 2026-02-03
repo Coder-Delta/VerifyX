@@ -16,45 +16,7 @@ app.get('/', async (_, res) => {
   res.send(data)
 })
 
-// ADD THIS NEW TEST ENDPOINT
-app.get('/test-redis', async (req, res) => {
-  try {
-    console.log('\n========== TESTING REDIS CONNECTION ==========');
-    
-    // Test SET
-    const testKey = 'test:connection';
-    const testValue = 'Hello Redis ' + Date.now();
-    
-    const setResult = await redis.set(testKey, testValue, { ex: 60 });
-    console.log('SET result:', setResult);
-    
-    // Test GET
-    const getResult = await redis.get(testKey);
-    console.log('GET result:', getResult);
-    console.log('Values match:', getResult === testValue);
-    
-    // Test TTL
-    const ttl = await redis.ttl(testKey);
-    console.log('TTL:', ttl);
-    
-    res.json({
-      success: true,
-      setResult,
-      getResult,
-      valuesMatch: getResult === testValue,
-      ttl,
-      message: 'Redis is working!'
-    });
-  } catch (error) {
-    console.error('Redis test failed:', error);
-    res.status(500).json({
-      success: false,
-      error: error.message
-    });
-  }
-});
-
-// Your existing routes
+// routes
 app.post('/send-mail', testMail)
 app.post('/verify-otp', verifyOtp)
 
