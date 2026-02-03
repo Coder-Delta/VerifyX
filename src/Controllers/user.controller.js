@@ -94,30 +94,4 @@ const verifyOtp = async (req, res) => {
   }
 };
 
-const testRedisConnection = async (req, res) => {
-  try {
-    const testKey = 'test:connection';
-    const testValue = 'Hello Redis ' + Date.now();
-    
-    const setResult = await redis.set(testKey, testValue, { ex: 60 });
-    const getResult = await redis.get(testKey);
-    const ttl = await redis.ttl(testKey);
-    
-    res.json({
-      success: true,
-      setResult,
-      getResult,
-      valuesMatch: getResult === testValue,
-      ttl,
-      message: 'Redis is working!'
-    });
-  } catch (error) {
-    console.error('Redis test failed:', error);
-    res.status(500).json({
-      success: false,
-      error: error.message
-    });
-  }
-};
-
-export { testMail, verifyOtp, testRedisConnection };
+export { testMail, verifyOtp };
